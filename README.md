@@ -11,4 +11,5 @@ Projeto final da matéria banco de dados da universidade de brasília 2021
  - Agência (mvno)
  - DDI
  - Fabricante
- - 
+ - Operadora
+ - Histórico
