@@ -8,7 +8,24 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html"), 200
+    return render_template("test.html", name="askdjkajhsdj"), 200
+
+@app.route("/opa", methods=['POST'])
+def show_values():
+    if request.method == 'POST':
+        print("REQUEST CHEGANDO!!!")
+        print(request.form['idade'])
+        print(request.form['id'])
+
+    #     if valid_login(request.form['username'],
+    #                    request.form['password']):
+    #         return log_the_user_in(request.form['username'])
+    #     else:
+    #         error = 'Invalid username/password'
+    # # the code below is executed if the request method
+    # # was GET or the credentials were invalid
+    return render_template('index_api.html'), 200
+
 
 @app.route("/videocontrol/shutdown/<second>")
 def shutdown(second):
