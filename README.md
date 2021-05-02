@@ -14,3 +14,4 @@ Projeto final da matéria banco de dados da universidade de brasília 2021
  - Operadora
  - Histórico
  - Torre (disponibiliza o sinal)
+ - Assinatura
