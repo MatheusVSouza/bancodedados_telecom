@@ -117,3 +117,159 @@ ALTER TABLE
     `Torre` ADD CONSTRAINT `torre_ddd_id_foreign` FOREIGN KEY(`ddd_id`) REFERENCES `DDD`(`id`);
 ALTER TABLE
     `Torre` ADD CONSTRAINT `torre_operadora_id_foreign` FOREIGN KEY(`operadora_id`) REFERENCES `Operadora`(`id`);
+
+
+
+
+
+##########################################################################################################################
+
+#INSERTS::
+INSERT INTO DDD(valor,regiao)
+values (61, "Brasilia");
+
+INSERT INTO DDD(valor,regiao)
+values (62, "Goias");
+
+INSERT INTO DDD(valor,regiao)
+values (65, "Mato Grosso");
+
+INSERT INTO DDD(valor,regiao)
+values (67, "Mato Grosso do Sul");
+
+INSERT INTO DDD(valor,regiao)
+values (82, "Alagoas");
+
+INSERT INTO DDD(valor,regiao)
+values (71, "Bahia");
+
+INSERT INTO DDD(valor,regiao)
+values (84, "Rio Grande Do Norte");
+
+INSERT INTO DDD(valor,regiao)
+values (22, "Rio de Janeiro");
+
+INSERT INTO DDD(valor,regiao)
+values (11, "Sao Paulo");
+
+INSERT INTO DDI(valor,pais)
+values(54,"Argentina");
+
+INSERT INTO DDI(valor,pais)
+values(55,"Brasil");
+
+INSERT INTO DDI(valor,pais)
+values(1,"EUA");
+
+INSERT INTO DDI(valor,pais)
+values(34,"Espanha");
+
+INSERT INTO DDI(valor,pais)
+values(44,"Reino Unido");
+
+
+INSERT INTO Usuario(nome,cpf,email)
+values(Matheus Souza, "036.529.651-80", "matheusv.souzaa@gmail.com");
+
+INSERT INTO Usuario(nome,cpf,email)
+values(Thiago Vieira, "043.228.898-20", "thiago_vieira7@gmail.com");
+
+INSERT INTO Usuario(nome,cpf,email)
+values("Caio Aguiar", "098.112.442-09", "caiop_aguiar@outlook.com");
+
+INSERT INTO Usuario(nome,cpf,email)
+values("Cristina Soares", "042.998.561-02", "cristina.soaress@gmail.com");
+
+INSERT INTO Usuario(nome,cpf,email)
+values("Hamilton Pires", "022.871.332-23", "hamiltin.p@outlook.com");
+
+
+INSERT INTO Operadora(nome,cnpj)
+values("Claro", "58.517.582/0001-68");
+
+INSERT INTO Operadora(nome,cnpj)
+values("Vivo", "52.084.480/0001-10");
+
+INSERT INTO Operadora(nome,cnpj)
+values("TIM", "87.655.670/0001-24");
+
+INSERT INTO Operadora(nome,cnpj)
+values("Verizon", "64.494.339/0001-74");
+
+INSERT INTO Operadora(nome,cnpj)
+values("Sprint Nextel", "78.670.533/0001-78");
+
+INSERT INTO Agencia(operadora_origem, nome)
+values(3, "Correios");
+
+INSERT INTO Agencia(operadora_origem, nome)
+values(3, "Śurf");
+
+INSERT INTO Agencia(operadora_origem, nome)
+values(1, "Anatel");
+
+INSERT INTO Agencia(operadora_origem, nome)
+values(2, "Dry");
+
+INSERT INTO Agencia(operadora_origem, nome)
+values(4, "Verizon Communications");
+
+
+
+INSERT INTO Fabricante(razao_social,cnpj)
+values("Alo Social","92.663.906/0001-04");
+
+INSERT INTO Fabricante(razao_social,cnpj)
+values("GD","81.023.497/0001-65");
+
+INSERT INTO Fabricante(razao_social,cnpj)
+values("Valid","91.921.766/0001-64");
+
+INSERT INTO Fabricante(razao_social,cnpj)
+values("Watchdata","77.932.671/0001-15");
+
+INSERT INTO Fabricante(razao_social,cnpj)
+values("Eseye","91.549.174/0001-63");
+
+
+INSERT INTO Chip(operadora_id, fabricante_id, imsi)
+values(1,2,"5512920014780");
+
+INSERT INTO Chip(operadora_id, fabricante_id, imsi)
+values(1,6,"5521920193623");
+
+INSERT INTO Chip(operadora_id, fabricante_id, imsi)
+values(2,3,"5518920005653");
+
+INSERT INTO Chip(operadora_id, fabricante_id, imsi)
+values(2,2,"5511920101323");
+
+INSERT INTO Chip(operadora_id, fabricante_id, imsi)
+values(3,6,"5521920193675");
+
+INSERT INTO Chip(operadora_id, fabricante_id, imsi)
+values(3,6,"5511920101398");
+
+INSERT INTO Chip(operadora_id, fabricante_id, imsi)
+values(4,4,"5517933002182");
+
+INSERT INTO Chip(operadora_id, fabricante_id, imsi)
+values(4,4,"5512920014727");
+
+INSERT INTO Chip(operadora_id, fabricante_id, imsi)
+values(5,5,"5518920005654");
+
+INSERT INTO Chip(operadora_id, fabricante_id, imsi)
+values(5,5,"5517933002112");
+
+
+
+
+
+
+
+
+
+
+
+
