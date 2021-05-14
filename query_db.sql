@@ -231,6 +231,9 @@ values("Watchdata","77.932.671/0001-15");
 INSERT INTO Fabricante(razao_social,cnpj)
 values("Eseye","91.549.174/0001-63");
 
+INSERT INTO Fabricante(razao_social,cnpj)
+values("Voy","92.429.394/0001-33");
+
 
 INSERT INTO Chip(operadora_id, fabricante_id, imsi)
 values(1,2,"5512920014780");

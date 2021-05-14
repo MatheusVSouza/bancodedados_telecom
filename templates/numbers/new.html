@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Adicionar novo numero</h2>
+
+
+    <form action="/numbers/create" method="POST">
+        Usuarios: 
+        <select name="user_id">
+            <option value="-1">
+                -- Selecione --
+            </option>
+            {% for user in data[3] %}
+                <option value="{{user[0]}}">
+                    {{user[1]}}
+                </option>
+            {% endfor %}
+        </select> <br>
+        <br>
+        DDI: 
+        <select name="ddi_id">
+            <option value="-1">
+                -- Selecione --
+            </option>
+            {% for ddi in data[0] %}
+                <option value="{{ddi[0]}}">
+                    {{ddi[1]}}
+                </option>
+            {% endfor %}
+        </select> <br>
+        <br>
+        DDD: 
+        <select name="ddd_id">
+            <option value="-1">
+                -- Selecione --
+            </option>
+            {% for ddd in data[1] %}
+                <option value="{{ddd[0]}}">
+                    {{ddd[1]}}
+                </option>
+            {% endfor %}
+        </select> <br>
+        <br>
+        Operadora: 
+        <select name="operadora_id">
+            <option value="-1">
+                -- Selecione --
+            </option>
+            {% for operadora in data[2] %}
+                <option value="{{operadora[0]}}">
+                    {{operadora[1]}}
+                </option>
+            {% endfor %}
+        </select> <br>
+        <br>
+        Número: <input type="text" name="number">
+        <br>
+        <br>
+        <input type="submit" value="Salvar">
+    </form>
+</body>
+</html>

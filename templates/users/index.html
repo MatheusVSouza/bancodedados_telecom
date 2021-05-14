@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Users Index<br>
+    
+    <table>
+    <tr>
+        <th>Nome</th>
+    </tr>
+    
+    {% for user in users %}
+    <tr>
+        <td> {{ user[1] }} </td>
+        <td><a href="users/{{user[0]}}">Mostrar</a></td>
+        <td><a href="users/edit/{{user[0]}}">Editar</a></td>
+        <td><a href="users/delete/{{user[0]}}">Excluir</a></td>
+    </tr>
+    {% endfor %}
+    
+
+    
+    
+
+</table>
+<br>
+<br>
+<a href="/users/new">Criar novo usuário</a>
+</body>
+</html>

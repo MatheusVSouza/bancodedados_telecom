@@ -1,7 +1,7 @@
 import mysql.connector
 
 
-db = 
+
 
 cursor = db.cursor()
 cursor.execute("use TelecomDB;")

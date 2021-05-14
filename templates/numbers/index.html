@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Number Index<br>
+    
+    <table>
+    <tr>
+        <th>Numero</th>
+    </tr>
+    
+    {% for number in numbers %}
+    <tr>
+        <td> {{ number[5] }} </td>
+        <td><a href="numbers/{{number[0]}}">Mostrar</a></td>
+        <td><a href="numbers/edit/{{number[0]}}">Editar</a></td>
+        <td><a href="numbers/delete/{{number[0]}}">Excluir</a></td>
+    </tr>
+    {% endfor %}
+    
+
+    
+    
+
+</table>
+<br>
+<br>
+<a href="/numbers/new">Criar novo numero</a>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Editar numero</h2>
+
+
+    <form action="/numbers/update" method="POST">
+        <input type="hidden" name="id" value="{{number[0]}}">
+        Usuario: 
+        <select name="user_id">
+            <option value="-1">
+                -- Selecione --
+            </option>
+            {% for user in data[0] %}
+                {% if user[0] == number[1] %}
+                    <option value="{{user[0]}}" selected>
+                        {{user[1]}}
+                    </option>
+                {% else %}
+                    <option value="{{user[0]}}">
+                        {{user[1]}}
+                    </option>
+                {% endif %}
+            {% endfor %}
+        </select> <br>
+        <br>
+        DDI: 
+        <select name="ddi_id">
+            <option value="-1">
+                -- Selecione --
+            </option>
+            {% for ddi in data[3] %}
+                {% if ddi[0] == number[3] %}
+                    <option value="{{ddi[0]}}" selected>
+                        {{ddi[1]}}
+                    </option>
+                {% else %}
+                    <option value="{{ddi[0]}}">
+                        {{ddi[1]}}
+                    </option>
+                {% endif %}
+            {% endfor %}
+        </select> <br>
+        <br>
+        DDD: 
+        <select name="ddd_id">
+            <option value="-1">
+                -- Selecione --
+            </option>
+            {% for ddd in data[2] %}
+                {% if ddd[0] == number[2] %}
+                    <option value="{{ddd[0]}}" selected>
+                        {{ddd[1]}}
+                    </option>
+                {% else %}
+                    <option value="{{ddd[0]}}">
+                        {{ddd[1]}}
+                    </option>
+                {% endif %}
+            {% endfor %}
+        </select> <br>
+        <br>
+        Operadora: 
+        <select name="operadora_id">
+            <option value="-1">
+                -- Selecione --
+            </option>
+            {% for operadora in data[1] %}
+                {% if operadora[0] == numberOperadora[0] %}
+                    <option value="{{operadora[0]}}" selected>
+                        {{operadora[1]}}
+                    </option>
+                {% else %}
+                    <option value="{{operadora[0]}}">
+                        {{operadora[1]}}
+                    </option>
+                {% endif %}
+            {% endfor %}
+        </select> <br>
+        <br>
+        Número: <input type="text" name="number" value="{{number[5]}}">
+        <br>
+        <br>
+        <input type="submit" value="Salvar">
+    </form>
+</body>
+</html>

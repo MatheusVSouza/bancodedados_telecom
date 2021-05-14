@@ -1,5 +1,5 @@
 Partes do Projeto:
-[ ] Introdução
+[x] Introdução
 
 [x] Modelo de Entidade Relacionamento. Usando alguma ferramenta de modelagem.
 
@@ -19,9 +19,9 @@ camada de persistência.
 [ ] Um programa com as funções de CRUD (Create Read Update Delete ) para um
 conjunto de no mínimo 3 tabelas com relacionamento entre elas. 
 
-[ ] Utilização de pelo menos uma View. A complexidade da view será avaliada.
+[X] Utilização de pelo menos uma View. A complexidade da view será avaliada.
 
-[ ] Utilização de pelo menos uma Procedure (com comandos condicionais). A
+[X] Utilização de pelo menos uma Procedure (com comandos condicionais). A
 complexidade da procedure será avaliada.
 
 [ ] Inserção de um dado binário no banco, pode ser foto, arquivo PDF ou outro tipo de
