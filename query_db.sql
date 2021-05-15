@@ -169,10 +169,10 @@ values(44,"Reino Unido");
 
 
 INSERT INTO Usuario(nome,cpf,email)
-values(Matheus Souza, "036.529.651-80", "matheusv.souzaa@gmail.com");
+values("Matheus Souza", "036.529.651-80", "matheusv.souzaa@gmail.com");
 
 INSERT INTO Usuario(nome,cpf,email)
-values(Thiago Vieira, "043.228.898-20", "thiago_vieira7@gmail.com");
+values("Thiago Vieira", "043.228.898-20", "thiago_vieira7@gmail.com");
 
 INSERT INTO Usuario(nome,cpf,email)
 values("Caio Aguiar", "098.112.442-09", "caiop_aguiar@outlook.com");
@@ -270,16 +270,96 @@ INSERT INTO Pagamentos(tipo, valor, status, data)
 values("", 0, "", CURRENT_DATE());
 
 INSERT INTO Pagamentos(tipo, valor, status, data)
-values("CARTÃO", 3230, "PAGO", CURRENT_DATE());
+values("CARTÃO", 3230, "Pago", CURRENT_DATE());
 
 INSERT INTO Pagamentos(tipo, valor, status, data)
-values("CARTÃO", 4123, "RECUSADO", CURRENT_DATE());
+values("CARTÃO", 4123, "Estornado", CURRENT_DATE());
 
 INSERT INTO Pagamentos(tipo, valor, status, data)
-values("BOLETO", 5413, "AUTORIZADO", CURRENT_DATE());
+values("BOLETO", 5413, "Pendente", CURRENT_DATE());
 
 INSERT INTO Pagamentos(tipo, valor, status, data)
-values("CARTÃO", 4317, "AUTORIZADO", CURRENT_DATE());
+values("CARTÃO", 5213, "Pago", CURRENT_DATE());
+
+INSERT INTO Pagamentos(tipo, valor, status, data)
+values("CARTÃO", 7423, "Pendente", CURRENT_DATE());
+
+INSERT INTO Pagamentos(tipo, valor, status, data)
+values("BOLETO", 6372, "Pendente", CURRENT_DATE());
+
+
+
+INSERT INTO Numero(user_id, ddd_id, ddi_id, chip_id, numero, disponivel)
+values(1, 2, 2, 4, "31234124", 0);
+
+INSERT INTO Numero(user_id, ddd_id, ddi_id, chip_id, numero, disponivel)
+values(2, 2, 2, 2, "87189273", 0);
+
+INSERT INTO Numero(user_id, ddd_id, ddi_id, chip_id, numero, disponivel)
+values(3, 3, 2, 5, "12381252", 0);
+
+INSERT INTO Numero(user_id, ddd_id, ddi_id, chip_id, numero, disponivel)
+values(1, 2, 1, 3, "46637182", 0);
+
+INSERT INTO Numero(user_id, ddd_id, ddi_id, chip_id, numero, disponivel)
+values(4, 4, 3, 1, "72385193", 0);
+
+
+INSERT INTO Plano(agencia_id, nome, preco, dt_expiracao, pagamento_id)
+values(1, "Plano Fidelidade", 4123, CURRENT_DATE(), 1);
+
+INSERT INTO Plano(agencia_id, nome, preco, dt_expiracao, pagamento_id)
+values(1, "Felicidade Mobile", 3412, CURRENT_DATE(), 2);
+
+INSERT INTO Plano(agencia_id, nome, preco, dt_expiracao, pagamento_id)
+values(2, "Cliente Max", 5762, CURRENT_DATE(), 3);
+
+INSERT INTO Plano(agencia_id, nome, preco, dt_expiracao, pagamento_id)
+values(4, "Infinity", 8888, CURRENT_DATE(), 4);
+
+INSERT INTO Plano(agencia_id, nome, preco, dt_expiracao, pagamento_id)
+values(5, "Premiu", 9999999, CURRENT_DATE(), 5);
+
+
+INSERT INTO Assinatura(numero_id, plano_id, dt_criacao)
+values(5, 1, CURRENT_DATE());
+
+INSERT INTO Assinatura(numero_id, plano_id, dt_criacao)
+values(4, 2, CURRENT_DATE());
+
+INSERT INTO Assinatura(numero_id, plano_id, dt_criacao)
+values(3, 1, CURRENT_DATE());
+
+INSERT INTO Assinatura(numero_id, plano_id, dt_criacao)
+values(1, 3, CURRENT_DATE());
+
+INSERT INTO Assinatura(numero_id, plano_id, dt_criacao)
+values(2, 4, CURRENT_DATE());
+
+INSERT INTO Assinatura(numero_id, plano_id, dt_criacao)
+values(1, 5, CURRENT_DATE());
+
+
+INSERT INTO Torre(operadora_id, ddd_id, endereco, alcance, altura)
+values(1, 2, "Rua 97 1201", 2430, 130);
+
+INSERT INTO Torre(operadora_id, ddd_id, endereco, alcance, altura)
+values(1, 3, "Rua José Barroso 614", 3240, 180);
+
+INSERT INTO Torre(operadora_id, ddd_id, endereco, alcance, altura)
+values(2, 2, "Avenida Desembargador Clotário Portugal 373", 1500, 320);
+
+INSERT INTO Torre(operadora_id, ddd_id, endereco, alcance, altura)
+values(3, 1, "Rua São João 1517", 7800, 500);
+
+INSERT INTO Torre(operadora_id, ddd_id, endereco, alcance, altura)
+values(4, 1, "Quadra QNG 03 97", 6520, 380);
+
+INSERT INTO Torre(operadora_id, ddd_id, endereco, alcance, altura)
+values(5, 4, "Rua Maria Simões Fracaro 503", 2430, 120);
+
+
+
 
 
 
