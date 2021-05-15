@@ -127,6 +127,13 @@ def users_delete(id):
 @app.route("/numbers", methods=['GET'])
 def numbers_index():
     numbers = bd.getAllNumbers()
+    i = 0
+    for number in numbers:
+        chip = bd.getChip(number[4])
+        operadora = bd.getOperadora(chip[1])
+        numbers[i] = number + (operadora[1],)
+        i += 1
+    print(numbers)
     return render_template('numbers/index.html', numbers = numbers), 200
 @app.route("/numbers/<id>", methods=['GET'])
 def numbers_show(id):
@@ -147,6 +154,7 @@ def numbers_new():
     ddis = bd.getAllDDIs()
     data = (ddis, ddds, operadoras, users)
     return render_template('numbers/new.html', data = data), 200
+
 @app.route("/numbers/create", methods=['POST'])
 def numbers_create():
     # Receber dados
@@ -157,14 +165,20 @@ def numbers_create():
     operadora_id = request.form['operadora_id']
     number = request.form['number']
     
-    chip = random.choice(bd.getAllChipsFromOperadora(operadora_id))
+    availableChips = bd.getAllChipsFromOperadora(operadora_id)
+    if(not availableChips):
+        print("n tem mais chips")
+        return "Não há mais Chips disponíveis para esta operadora<br><a href='/numbers/new'>Voltar</>", 400
+    
+    chip = random.choice(availableChips)
 
     # Validar dados: 
 
     numero = (user_id, ddd_id, ddi_id, chip[0], number)
+    
+    bd.updateChip(chip, 0)
 
     result = bd.createNewNumber(numero)
-    bd.updateChip(chip)
 
     if(result):
         # Deu tudo certo!
@@ -187,7 +201,6 @@ def numbers_edit(id):
     return render_template("numbers/edit.html", data = data, number = number, numberOperadora = operadora)
 @app.route("/numbers/update", methods=['POST'])
 def numbers_update():
-    # Receber dados
     id = request.form['id']
     number = bd.getNumber(id)
 
@@ -201,13 +214,12 @@ def numbers_update():
         ops = bd.getAllChipsFromOperadora(operadora_id)
         print("operadoras from chips:")
         print(operadora_id)
-        print(ops)
         newChip = random.choice(ops)
         toUpdate = (chip[0], chip[1], chip[2], chip[3], 1)
-        bd.updateChip(toUpdate)
+        bd.updateChip(toUpdate, 1)
         chip = newChip
         toUpdate = (chip[0], chip[1], chip[2], chip[3], 0)
-        bd.updateChip(toUpdate)
+        bd.updateChip(toUpdate, 0)
 
     
     # Validar dados: 
@@ -227,7 +239,7 @@ def numbers_update():
 def numbers_delete(id):
     # Validar dados: 
 
-    result = bd.deleteUser(id)
+    result = bd.deleteNumber(id)
 
     if(result):
         # Deu tudo certo!

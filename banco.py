@@ -121,9 +121,9 @@ class Banco:
 
         return self.cursor.fetchone()
 
-    def updateChip(self, chip):
+    def updateChip(self, chip, value):
         query = f"""
-            UPDATE Chip SET disponivel = 0 WHERE id = {chip[0]}
+            UPDATE Chip SET disponivel = {value} WHERE id = {chip[0]}
         """
         print("sql: "+query)
         self.cursor.execute(query)
@@ -151,7 +151,7 @@ class Banco:
 
     def deleteNumber(self, id):
         query = f"""
-            DELETE FROM Usuario WHERE id = {id}
+            DELETE FROM Numero WHERE id = {id}
         """
         print("sql: "+query)
         self.cursor.execute(query)
@@ -226,6 +226,9 @@ class Banco:
     
 
     def delete_numero(self, id):
+        number = bd.getNumber(id)
+        chip = bd.getChip(number[4])
+        self.updateChip(chip, 1)
         query = f"""
             DELETE FROM Numero WHERE id = {id}
         """

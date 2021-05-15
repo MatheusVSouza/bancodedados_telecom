@@ -13,11 +13,13 @@
     <table>
     <tr>
         <th>Numero</th>
+        <th>Operadora</th>
     </tr>
     
     {% for number in numbers %}
     <tr>
         <td> {{ number[5] }} </td>
+        <td> {{ number[7] }} </td>
         <td><a href="numbers/{{number[0]}}">Mostrar</a></td>
         <td><a href="numbers/edit/{{number[0]}}">Editar</a></td>
         <td><a href="numbers/delete/{{number[0]}}">Excluir</a></td>

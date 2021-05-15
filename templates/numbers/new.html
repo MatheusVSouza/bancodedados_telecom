@@ -9,6 +9,10 @@
 <body>
     <h2>Adicionar novo numero</h2>
 
+    {% if(message) %}  
+        {{ message }}
+    {% endif %}
+
 
     <form action="/numbers/create" method="POST">
         Usuarios: 
