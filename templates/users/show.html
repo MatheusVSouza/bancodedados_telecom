@@ -10,10 +10,13 @@
     <h2> Olá {{user[1]}}!</h2>
     Seus dados: <br>
     E-mail: {{user[3]}} <br>
-    CPF: {{user[2]}}
+    CPF: {{user[2]}} <br>
     Imagem de Perfil: 
-    {{file}}
-    <img src="{{ url_for('static', filename=filename) }}">
+    {% if filename %}
+        <img src="{{ url_for('static', filename=filename) }}">
+    {% else %}
+        Sem imagem de perfil
+    {% endif %}
     <br>
     <br>
     <a href="/users">

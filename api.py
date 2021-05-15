@@ -36,10 +36,11 @@ def users_index():
 def users_show(id):
     user = bd.getUser(id)
 
-    filename = "image_"+str(user[0])+".png"
-    print(type(user[4]))
-    with open("static/image_"+filename, 'wb') as f:
-        f.write(user[4])
+    filename = ""
+    if(user[4]):
+        filename = "image_"+str(user[0])+".png"
+        with open("static/"+filename, 'wb') as f:
+            f.write(user[4])
     
     return render_template('users/show.html', user = user, filename = filename), 200
 
