@@ -59,10 +59,10 @@ def users_create():
     nome = request.form['nome']
     email = request.form['email']
     cpf = request.form['cpf']
-
+    image = request.files['profile']
     # Validar dados: 
 
-    user = (nome, email, cpf)
+    user = (nome, email, cpf, image)
     result = bd.createNewUser(user)
     
 

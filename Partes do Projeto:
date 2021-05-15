@@ -16,7 +16,7 @@ tabelas.
 fontes e um diagrama apresentando como a interface gráfica do programa acessa a
 camada de persistência.
 
-[ ] Um programa com as funções de CRUD (Create Read Update Delete ) para um
+[X] Um programa com as funções de CRUD (Create Read Update Delete ) para um
 conjunto de no mínimo 3 tabelas com relacionamento entre elas. 
 
 [X] Utilização de pelo menos uma View. A complexidade da view será avaliada.
@@ -24,5 +24,5 @@ conjunto de no mínimo 3 tabelas com relacionamento entre elas.
 [X] Utilização de pelo menos uma Procedure (com comandos condicionais). A
 complexidade da procedure será avaliada.
 
-[ ] Inserção de um dado binário no banco, pode ser foto, arquivo PDF ou outro tipo de
+[X] Inserção de um dado binário no banco, pode ser foto, arquivo PDF ou outro tipo de
 arquivo
