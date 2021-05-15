@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Plan Index<br>
+    
+    <table>
+    <tr>
+        <th>Nome</th>
+        <th>Agência</th>
+    </tr>
+    
+    {% for plan in plans %}
+    <tr>
+        <td> {{ plan[2] }} </td>
+        <td> {{ plan[6] }} </td>
+        <td><a href="plans/{{plan[0]}}">Mostrar</a></td>
+        <td><a href="plans/edit/{{plan[0]}}">Editar</a></td>
+        <td><a href="plans/delete/{{plan[0]}}">Excluir</a></td>
+    </tr>
+    {% endfor %}
+    
+
+    
+    
+
+</table>
+<br>
+<br>
+<a href="/plans/new">Criar novo plano</a>
+</body>
+</html>

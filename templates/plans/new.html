@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Adicionar novo Plano</h2>
+
+    {% if(message) %}  
+        {{ message }}
+    {% endif %}
+
+
+    <form action="/plans/create" method="POST">
+        Agência: 
+        <select name="agency_id">
+            <option value="-1">
+                -- Selecione --
+            </option>
+            {% for agency in agencies %}
+                <option value="{{agency[0]}}">
+                    {{agency[2]}}
+                </option>
+            {% endfor %}
+        </select> <br>
+        <br>
+        Nome: <input type="text" name="name"> <br>
+        <br>
+
+        Preço: <input type="text" name="price"> <br>
+        <br>
+
+        Data de vencimento: <input type="date" name="expire_date"><br>
+        <br>
+
+        <input type="submit" value="Salvar">
+    </form>
+</body>
+</html>

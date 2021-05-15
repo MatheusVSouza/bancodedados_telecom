@@ -198,43 +198,72 @@ class Banco:
 
     
 
-    def inserir_numero(self, numero):
+
+
+    def getAllPlans(self):
         query = f"""
-            INSERT INTO Numero VALUES (?, ?, ?, ?, ?, ?, ?)
-        """
-
-        self.cursor.execute(query, Numero)
-
-
-    def inserir_numeros(self, numeros):
-        for Numero in Numeros:
-            self.inserir_numero(Numero)
-
-    
-
-    def update_numero(self, id, dados):
-        query = f"""
-            SELECT * FROM Numero WHERE id = {id}
-        """
-        self.cursor.execute(query)
-        result = self.cursor.fetchall()
-        if(result):
-            query = f"""
-            UPDATE Numero SET nome={dados['nome']}, cpf={dados['cpf']}, email={dados['email']} WHERE id = {id}
-            """
-            self.cursor.execute(query)
-    
-
-    def delete_numero(self, id):
-        number = bd.getNumber(id)
-        chip = bd.getChip(number[4])
-        self.updateChip(chip, 1)
-        query = f"""
-            DELETE FROM Numero WHERE id = {id}
+        SELECT * FROM Plano
         """
         self.cursor.execute(query)
 
+        return self.cursor.fetchall()
+
+
+    def getAgency(self, id):
+        query = f"""
+        SELECT * FROM Agencia WHERE id = {id}
+        """
+        self.cursor.execute(query)
+
+        return self.cursor.fetchone()
+
+    
+    def getPlan(self, id):
+        query = f"""
+        SELECT * FROM Plano WHERE id = {id}
+        """
+        self.cursor.execute(query)
+
+        return self.cursor.fetchone()
+
+
+    def getAllAgencies(self):
+        query = f"""
+        SELECT * FROM Agencia
+        """
+        self.cursor.execute(query)
+
+        return self.cursor.fetchall()
             
+
+    def createNewPlan(self, plan):
+        query = f"""
+            INSERT INTO Plano(agencia_id, nome, preco, pagamento_id, dt_expiracao) VALUES ('{plan[0]}', '{plan[1]}', '{plan[2]}', '{plan[3]}', '{plan[4]}')
+        """
+        print("sql create plan: "+query)
+        self.cursor.execute(query)
+        self.connect.commit()
+        return True
+    
+    def updatePlan(self, plan):
+        query = f"""
+            UPDATE Plano SET agencia_id = '{plan[1]}', nome = '{plan[2]}', preco = '{plan[3]}', pagamento_id = '{plan[4]}', dt_expiracao = '{plan[5]}' WHERE id = {plan[0]}
+        """
+        print("sql: "+query)
+        self.cursor.execute(query)
+        self.connect.commit()
+        return True
+
+    def deletePlan(self, id):
+        query = f"""
+            DELETE FROM Plano WHERE id = {id}
+        """
+        print("sql: "+query)
+        self.cursor.execute(query)
+        self.connect.commit()
+        return True
+
+
 
 
 

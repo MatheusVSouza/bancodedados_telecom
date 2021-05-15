@@ -266,6 +266,21 @@ INSERT INTO Chip(operadora_id, fabricante_id, imsi)
 values(5,5,"5517933002112");
 
 
+INSERT INTO Pagamentos(tipo, valor, status, data)
+values("", 0, "", CURRENT_DATE());
+
+INSERT INTO Pagamentos(tipo, valor, status, data)
+values("CARTÃO", 3230, "PAGO", CURRENT_DATE());
+
+INSERT INTO Pagamentos(tipo, valor, status, data)
+values("CARTÃO", 4123, "RECUSADO", CURRENT_DATE());
+
+INSERT INTO Pagamentos(tipo, valor, status, data)
+values("BOLETO", 5413, "AUTORIZADO", CURRENT_DATE());
+
+INSERT INTO Pagamentos(tipo, valor, status, data)
+values("CARTÃO", 4317, "AUTORIZADO", CURRENT_DATE());
+
 
 
 

@@ -17,8 +17,7 @@ bd = Banco()
 
 @app.route("/")
 def index():
-    bd.showMessage()
-    return render_template("test.html", name="askdjkajhsdj"), 200
+    return render_template("index_api.html", name="askdjkajhsdj"), 200
 
 @app.route("/opa", methods=['POST'])
 def show_values():
@@ -249,6 +248,102 @@ def numbers_delete(id):
         return render_template(), 400
 
 # ----- END Routes for Numbers -------
+
+
+
+
+# ----- Routes for Plans -------
+
+# Read
+@app.route("/plans", methods=['GET'])
+def plans_index():
+    plans = bd.getAllPlans()
+    i = 0
+    for plan in plans:
+        agency = bd.getAgency(plan[1])
+        plans[i] = plan + (agency[2],)
+        i += 1
+    print(plans)
+    return render_template('plans/index.html', plans = plans), 200
+@app.route("/plans/<id>", methods=['GET'])
+def plans_show(id):
+    plan = bd.getPlan(id)
+    print(plan)
+    agency = bd.getAgency(plan[1])
+    return render_template('plans/show.html', plan = plan, agency = agency[2]), 200
+
+# Create User
+@app.route("/plans/new", methods=['GET'])
+def plans_new():
+    agencies = bd.getAllAgencies()
+    return render_template('plans/new.html', agencies = agencies), 200
+
+@app.route("/plans/create", methods=['POST'])
+def plans_create():
+    # Receber dados
+
+    agency_id = request.form['agency_id']
+    name = request.form['name']
+    price = request.form['price']
+    expire_date = request.form['expire_date']
+  
+    # Validar dados: 
+
+    plano = (agency_id, name, price, 0, expire_date)
+
+    result = bd.createNewPlan(plano)
+
+    if(result):
+        # Deu tudo certo!
+        return redirect(f"/plans")
+    else:
+        # Algo deu errado...
+        return render_template(), 400
+
+# Update
+@app.route("/plans/edit/<id>", methods=['GET'])
+def plans_edit(id):
+    plan = bd.getPlan(id)
+    agencies = bd.getAllAgencies()
+    agency = bd.getAgency(plan[1])
+    return render_template("plans/edit.html", plan = plan, agencies = agencies, planAgency = agency[0])
+@app.route("/plans/update", methods=['POST'])
+def plans_update():
+    id = request.form['id']
+    agency_id = request.form['agency_id']
+    name = request.form['name']
+    price = request.form['price']
+    expire_date = request.form['expire_date']
+    
+    # Validar dados: 
+
+    updatedPlan = (id, agency_id, name, price, 0, expire_date)
+    result = bd.updatePlan(updatedPlan)
+
+    if(result):
+        # Deu tudo certo!
+        return redirect(f"/plans")
+    else:
+        # Algo deu errado...
+        return render_template(), 400
+
+# Delete
+@app.route("/plans/delete/<id>", methods=['GET'])
+def plans_delete(id):
+    # Validar dados: 
+
+    result = bd.deletePlan(id)
+
+    if(result):
+        # Deu tudo certo!
+        return redirect(f"/plans")
+    else:
+        # Algo deu errado...
+        return render_template(), 400
+
+# ----- END Routes for plans -------
+
+
 
 if  __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

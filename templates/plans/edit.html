@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Editar Plano</h2>
+
+    {% if(message) %}  
+        {{ message }}
+    {% endif %}
+
+
+    <form action="/plans/update" method="POST">
+        <input type="hidden" name="id" value="{{plan[0]}}">
+        Agência: 
+        <select name="agency_id">
+            <option value="-1">
+                -- Selecione --
+            </option>
+            {% for agency in agencies %}
+                {% if agency[0] == planAgency %}
+                    <option value="{{agency[0]}}" selected>
+                        {{agency[2]}}
+                    </option>
+                {% else %}
+                    <option value="{{agency[0]}}">
+                        {{agency[2]}}
+                    </option>
+                {% endif %}
+            {% endfor %}
+        </select> <br>
+        <br>
+        Nome: <input type="text" name="name" value="{{plan[2]}}"> <br>
+        <br>
+
+        Preço: <input type="text" name="price" value="{{plan[3]}}"> <br>
+        <br>
+
+        Data de vencimento: <input type="date" name="expire_date" value="{{plan[4]}}"><br>
+        <br>
+
+        <input type="submit" value="Salvar">
+    </form>
+</body>
+</html>
