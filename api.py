@@ -1,14 +1,18 @@
 import sys
+
+from flask.helpers import url_for
 sys.path.append("./banco.py")
 from banco import *
 import os
 import requests
 import random
 from flask import Flask, Response, request, render_template, redirect
+from werkzeug.utils import secure_filename
 from pynput.keyboard import Key, Controller
 
-keyboard = Controller()        
+UPLOAD_FOLDER = "/uploads/images"
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 bd = Banco()
 
@@ -17,23 +21,7 @@ bd = Banco()
 
 @app.route("/")
 def index():
-    return render_template("index_api.html", name="askdjkajhsdj"), 200
-
-@app.route("/opa", methods=['POST'])
-def show_values():
-    if request.method == 'POST':
-        print(request.form['idade'])
-        print(request.form['id'])
-
-    #     if valid_login(request.form['username'],
-    #                    request.form['password']):
-    #         return log_the_user_in(request.form['username'])
-    #     else:
-    #         error = 'Invalid username/password'
-    # # the code below is executed if the request method
-    # # was GET or the credentials were invalid
-    return render_template('index_api.html'), 200
-
+    return render_template("index_api.html"), 200
 
 #  Create, Read, Update & Delete
 
@@ -47,7 +35,13 @@ def users_index():
 @app.route("/users/<id>", methods=['GET'])
 def users_show(id):
     user = bd.getUser(id)
-    return render_template('users/show.html', user = user), 200
+
+    filename = "image_"+str(user[0])+".png"
+    print(type(user[4]))
+    with open("static/image_"+filename, 'wb') as f:
+        f.write(user[4])
+    
+    return render_template('users/show.html', user = user, filename = filename), 200
 
 # Create User
 @app.route("/users/new", methods=['GET'])
@@ -59,10 +53,12 @@ def users_create():
     nome = request.form['nome']
     email = request.form['email']
     cpf = request.form['cpf']
-    image = request.files['profile']
+    file = request.files['profile'].read()
+    print(file)
+
     # Validar dados: 
 
-    user = (nome, email, cpf, image)
+    user = (nome, email, cpf, file)
     result = bd.createNewUser(user)
     
 

@@ -12,7 +12,8 @@
     E-mail: {{user[3]}} <br>
     CPF: {{user[2]}}
     Imagem de Perfil: 
-    <img src="{{  url_for('display_image', filename=user[4]) }}">
+    {{file}}
+    <img src="{{ url_for('static', filename=filename) }}">
     <br>
     <br>
     <a href="/users">

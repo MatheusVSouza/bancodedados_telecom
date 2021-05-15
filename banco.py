@@ -14,12 +14,10 @@ class Banco:
         query = f"""
         USE TelecomDB
         """
-        
         self.cursor = self.connect.cursor() 
         self.cursor.execute(query)
 
-    def showMessage(self):
-        print("TA FUNCIONANDO")
+
 
     def getAllUsers(self):
         query = f"""
@@ -37,23 +35,13 @@ class Banco:
 
         return self.cursor.fetchone()
 
-    def convertToBinaryData(self, filename):
-        # Convert digital data to binary format
-        # bin_data = open(path, 'rb').read()
-        # import codecs
-        # hex_data = codecs.encode(bin_data, "hex_codec")
-        with open(filename, 'rb') as file:
-            blobData = file.read()
-        return blobData
 
     def createNewUser(self, user):
        
-        image = self.convertToBinaryData(user[3])
-        query = f"""
-            INSERT INTO Usuario(nome, email, cpf, profile) VALUES ('{user[0]}', '{user[1]}', '{user[2]}', {image})
-        """
+        query = "INSERT INTO Usuario(nome, email, cpf, profile) VALUES (%s, %s, %s, %s)"
+        
         print("sql: "+query)
-        self.cursor.execute(query)
+        self.cursor.execute(query, user)
         self.connect.commit()
         return True
     
