@@ -8,7 +8,7 @@ Projeto final da matéria banco de dados da universidade de brasília 2021
  - Plano
  - DDD
  - Usuário
- - Agência (mvno)
+ - Agência
  - DDI
  - Fabricante
  - Operadora
